@@ -28,7 +28,7 @@
   }])
 .directive('numberValidation', function () {
     return {
-        require: '?ngModel',
+        require: 'ngModel',
         link: function (scope, element, attrs, ngModelCtrl) {
             if (!ngModelCtrl) {
                 return;
