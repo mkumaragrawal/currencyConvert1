@@ -34,22 +34,22 @@
                 return;
             }
 
-            ngModelCtrl.$parsers.push(function (val) {
-                var clean = val.replace(/[^0-9\.]+/g, '');
-                if (val != clean || val.indexOf('.') != val.lastIndexOf('.')) {
-                    if (val.indexOf('.') != val.lastIndexOf('.')) {
-                        clean = clean.substring(0, clean.length - 1);
+            ngModelCtrl.$parsers.push(function (value) {
+                var flag = value.replace(/[^0-9\.]+/g, '');
+                if (value != flag || value.indexOf('.') != value.lastIndexOf('.')) {
+                    if (value.indexOf('.') != value.lastIndexOf('.')) {
+                        flag = flag.substring(0, flag.length - 1);
                     }
                 }
 
-                if (clean.indexOf('.') != -1) {
-                    if (clean.length > (clean.indexOf('.') + 3)) {
-                        clean = clean.substring(0, clean.length - 1);
+                if (flag.indexOf('.') != -1) {
+                    if (flag.length > (flag.indexOf('.') + 3)) {
+                        flag = flag.substring(0, flag.length - 1);
                     }
                 }
-                ngModelCtrl.$setViewValue(clean);
+                ngModelCtrl.$setViewValue(flag);
                 ngModelCtrl.$render();
-                return clean;
+                return flag;
             });
 
             element.bind('keypress', function (event) {
